@@ -1,13 +1,10 @@
 pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
     let mut results = Vec::new();
 
-    for line in contents.lines() {
-        //uses .lines rust builtin method to read each line
-        if line.contains(query) {
-            results.push(line);
-        }
-    }
-    results //return value 
+    contents
+        .lines()
+        .filter(|line| line.contains(query))
+        .collect()
 }
 
 pub fn search_case_insensitive<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
